@@ -1,5 +1,6 @@
 import { Pool } from "pg";
 
+// ایجاد کانکشن با متغیر لوکال
 const connectionString = process.env.DATABASE_URL;
 
 // در صورت عدم تنظیم کانکشن استرینگ پیغام مناسب صادر می شود.
@@ -26,7 +27,7 @@ pool.on("error", (err) => {
     process.exit(-1);
 });
 
-
+// بررسی اینکه pool در حالت حالت توسعه ساخته بشه
 if(process.env.NODE_ENV !== "production"){
     global.pgPool = pool;
 }

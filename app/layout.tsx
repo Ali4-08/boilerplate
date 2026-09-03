@@ -14,7 +14,7 @@ const vazirmatn = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "بویلز پلیت",
+  title: "بویلر پلیت",
   description: "یک نقطه شروع حرفه‌ای برای پروژه های Next.js فارسی با TypeScript، Tailwind CSS و PostgreSQL",
 };
 
