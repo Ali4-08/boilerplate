@@ -1,5 +1,6 @@
 // \lib\jwt.ts
 import { SignJWT, jwtVerify } from "jose";
+import type { TokenPayload } from "./types";
 
 // نمایش خطای مناسب درصورتی که jwt_secret یافت نشود.
 if (!process.env.JWT_SECRET) {
@@ -21,7 +22,7 @@ export async function createToken(userId: number, email: string) {
 
 /**تابع بررسی و خواندن توکن */
 export async function verifyToken(token: string) {
-  const { payload } = await jwtVerify(token, secret);
+  const { payload } = await jwtVerify<TokenPayload>(token, secret);
   if(!payload){
     throw new Error("خطا در توکن");
   }
