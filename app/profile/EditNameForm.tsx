@@ -7,6 +7,7 @@ import { appError } from "@/lib/logError";
 import { useRouter } from "next/navigation";
 import { AuthResponse } from "@/lib/types";
 
+
 interface EditFormProps {
   currentName: string;
 }
@@ -74,7 +75,7 @@ export default function EditNameForm({ currentName }: EditFormProps) {
   return (
     <div className="bg-white shadow-sm border border-gray-200 rounded-lg p-6">
       <h2 className="text-xl font-semibold text-gray-800 mb-8">ویرایش نام</h2>
-
+      
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="fullname" className="block mb-2 text-gray-700">
