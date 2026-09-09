@@ -54,8 +54,13 @@ export async function POST(request: NextRequest){
         {error: "این ایمیل قبلا ثبت شده است"},
         {status: 409},
       );
+    } else {
+      return NextResponse.json(
+        {error: `خطای سرور: ${error.message}`},
+        {status: 500},
+      );
     }
-    console.error(error.message);
+    
   }
 
   

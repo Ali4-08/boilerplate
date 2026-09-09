@@ -6,6 +6,7 @@ import pool from "@/lib/db";
 import type { PublicUser } from "@/lib/types";
 import { appError } from "@/lib/logError";
 
+
 export async function PUT(request: NextRequest) {
   try {
     const currentUser = await getUserFromToken();

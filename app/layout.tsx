@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
 
+
 // تنظیم فونت وزیر متن به صورت محلی و لوکال
 const vazirmatn = localFont({
   src: [
@@ -33,7 +34,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
       data-scroll-behavior="smooth"
       className="h-full antialiased"      
     >
-      <body className={`${vazirmatn.variable} min-h-full flex flex-col`}>{children}</body>
+      <body 
+      className={`${vazirmatn.variable} min-h-full flex flex-col`}>      
+        
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

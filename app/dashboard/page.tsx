@@ -2,7 +2,8 @@
 
 import { getUserFromToken } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import LogoutButton from "@/components/LogoutButton";
+import Header from "@/components/Header";
+import MobileMenu from "@/components/MobileMenu";
 
 export default async function DashboardPage() {
   // دریافط اطلاعات کاربر
@@ -15,14 +16,21 @@ export default async function DashboardPage() {
 
   // نمایش صفحه داشبورد
   return (
-    <main className="min-h-screen p-8 bg-gray-50">
-      <div className="w-full max-w-4xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
+    <main className="min-h-screen bg-gray-50 md:p-0">
+      <div className="hidden md:block">
+        <Header />
+      </div>
+
+      <div className="md:hidden">
+        <MobileMenu />
+      </div>
+
+      <div className="w-full max-w-4xl mx-auto p-4 md:p-6">
+        <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">داشبورد</h1>
-          <LogoutButton />
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm p-6">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <h2 className="text-xl font-semibold text-gray-800">
             خوش آمدید {user.name}
           </h2>

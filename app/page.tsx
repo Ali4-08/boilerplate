@@ -2,12 +2,9 @@ import Link from "next/link";
 import pool from "@/lib/db";
 
 
-export default async function HomePage() {
+export default function HomePage() {
 
-  const result = await pool.query('SELECT * FROM users');
-
-  console.log(result.rows);
-
+  
   return (
     <main className="flex flex-col items-center justify-center min-h-screen gap-4">
       <div className="space-y-5 sm:space-y-6 text-center max-w-7xl mx-auto">
