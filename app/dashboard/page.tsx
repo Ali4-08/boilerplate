@@ -31,10 +31,14 @@ export default async function DashboardPage() {
         </div>
 
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    
           <h2 className="text-xl font-semibold text-gray-800">
             خوش آمدید {user.name}
           </h2>
-          <p className="mt-2 text-gray-600">آدرس ایمیل: {user.email}</p>
+          <p className="mt-2 text-gray-600">
+            نقش: {user.role === 'ADMIN' ? "مدیر" : "کاربر"}
+          </p>
+          <p className="text-gray-600">آدرس ایمیل: {user.email}</p>
           <p className="text-sm text-gray-500 mt-1">
             تاریخ عضویت:{" "}
             {new Date(user.created_at).toLocaleDateString("fa-IR", {

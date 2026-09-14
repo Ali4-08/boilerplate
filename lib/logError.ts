@@ -1,7 +1,7 @@
-import { ErrorType } from "@/lib/types";
+import { InternalError } from "@/lib/types";
 
 export function appError(error: unknown, context?: string){
-    const err = error as ErrorType;
+    const err = error as InternalError;
 
     if(context){
         console.log("Context:", context);

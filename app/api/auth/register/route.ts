@@ -2,8 +2,10 @@
 
 import { NextResponse, NextRequest } from "next/server";
 import pool from "@/lib/db";
-import { ErrorType, User } from "@/lib/types";
+import { ApiResponse, PublicUser } from "@/lib/types";
 import bcrypt from "bcryptjs";
+import { sendWelcomeEmail } from "@/lib/email";
+
 
 export async function POST(request: NextRequest){
   try {
@@ -24,23 +26,28 @@ export async function POST(request: NextRequest){
 
   // ثبت اطلاعات ورودی در پایگاه داده
   const result = await pool.query(`
-    INSERT INTO users(name, email, password_hash)
-    VALUES($1, $2, $3)
-    RETURNING id, name, email, created_at;
+    INSERT INTO users(name, email, password_hash, role)
+    VALUES($1, $2, $3, 'USER')
+    RETURNING id, name, email, role, created_at;
     `, [name, email, hashPassword]);
-    const user = result.rows[0] as User;
+    const user = result.rows[0] as PublicUser | undefined;
+
+    // ارسال ایمیل خوش آمدگویی
+    sendWelcomeEmail(email, name).then(result => {
+      if(!result.success){
+        console.error("Welcome email is faild.", result.error);
+      }
+    }).catch(err => {
+      console.error("Welcome email error", err);
+    });
+    
 
     // ارسال پیام مناسب بعد از ثبت به فرم ثبت نام
     return NextResponse.json(
       {
         success: true, 
         message: "کاربر ثبت شد.", 
-        user: {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          create_at: user.created_at,
-        }
+        data: user,
       },
       {status: 201},
     );
@@ -48,7 +55,7 @@ export async function POST(request: NextRequest){
   } catch (err) {
 
     // نمایش پیغام خطای مناسب  هنگام بروز خطا
-    const error = err as ErrorType;
+    const error = err as ApiResponse;
     if(error.code === '23505'){
       return NextResponse.json(
         {error: "این ایمیل قبلا ثبت شده است"},

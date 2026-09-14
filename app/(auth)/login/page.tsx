@@ -2,15 +2,15 @@
 
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import type { AuthResponse } from "@/lib/types";
+import type { ApiResponse } from "@/lib/types";
 import { useSearchParams } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 
-export default function LoginPage() {
 
+function LoginForm() {
   // تنظیم متغیر های مربوطه برای درسافت اطلاعات ار فرم
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,25 +29,25 @@ export default function LoginPage() {
   // متغیر جهت بررسی اینکه آیا کاربر بعد از ثبت وارد این صفحه شده یا خیر
   const registered = searchParams.get("registered");
 
+  const resetSuccess = searchParams.get("reset") === "success";
+
   // تابع ارسال اطلاعات کاربر
   const handleSubmit = async (e: React.FormEvent) => {
-
     // جلوگیری از رفرش صفحه
-    e.preventDefault(); 
+    e.preventDefault();
 
     setLoading(true);
     setError("");
 
     // ارسال اطلاعات جهت بررسی و ورود
     try {
-
       // ارسال درخواست به api
       const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-      const data: AuthResponse = await response.json();
+      const data: ApiResponse = await response.json();
 
       if (response.ok) {
         router.push("/dashboard");
@@ -69,6 +69,14 @@ export default function LoginPage() {
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
         ورود به حساب کاربری
       </h1>
+
+      {resetSuccess && (
+        <div className="bg-green-50 border border-green-200 rounded-md p-4 mb-4">
+          <p className="text-green-700 text-center">
+            ✅ رمز عبور با موفقیت تغییر کرد. اکنون وارد شوید.
+          </p>
+        </div>
+      )}
 
       <form
         onSubmit={handleSubmit}
@@ -105,17 +113,16 @@ export default function LoginPage() {
               className="border border-gray-400 hover:border-gray-500 focus:border-transparent w-full rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
             />
             <button
-            type="button"
-            aria-label="show password"
-            onClick={() => setShowPassword(prev => !prev)}
-            className="absolute left-0 top-1/2 -translate-y-1/2 p-2 cursor-pointer text-gray-600"
+              type="button"
+              aria-label="show password"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute left-0 top-1/2 -translate-y-1/2 p-2 cursor-pointer text-gray-600"
             >
-              {showPassword ? (<EyeOff size={24} />) : (<Eye size={24} />)}
+              {showPassword ? <EyeOff size={24} /> : <Eye size={24} />}
             </button>
           </div>
         </div>
 
-        
         <div>
           {/* پیغام های خطا */}
           <span>
@@ -127,7 +134,9 @@ export default function LoginPage() {
           {/* پیغام ثبت موفق */}
           <span>
             {registered && (
-              <p className="text-center text-green-600 font-semibold">کاربر با موفقیت ثبت شد. لطفا وارد شوید</p>
+              <p className="text-center text-green-600 font-semibold">
+                کاربر با موفقیت ثبت شد. لطفا وارد شوید
+              </p>
             )}
           </span>
         </div>
@@ -177,4 +186,12 @@ export default function LoginPage() {
       </form>
     </main>
   );
+}
+
+export default function LoginPage(){
+  return(
+    <Suspense fallback={<div>درحال بارگزاری صفحه...</div>}>
+      <LoginForm />
+    </Suspense>
+  )
 }

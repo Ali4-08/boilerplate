@@ -11,8 +11,8 @@ if (!process.env.JWT_SECRET) {
 const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
 /**تابع ساخت توکن */
-export async function createToken(userId: number, email: string) {
-  const token = await new SignJWT({ userId, email })
+export async function createToken(userId: number, email: string, role: string) {
+  const token = await new SignJWT({ userId, email, role })
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
     .setExpirationTime("7d")

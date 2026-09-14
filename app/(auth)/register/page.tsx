@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import type { AuthResponse } from "@/lib/types";
+import type { ApiResponse } from "@/lib/types";
 import { Eye, EyeOff } from "lucide-react";
 
 export default function RegisterPage() {
@@ -38,7 +38,7 @@ export default function RegisterPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
       });
-      const data: AuthResponse = await response.json();
+      const data: ApiResponse = await response.json();
 
       if (response.ok) {
         router.push("/login?registered=true");

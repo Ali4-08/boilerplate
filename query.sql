@@ -7,6 +7,7 @@ id serial PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
 email VARCHAR(255) UNIQUE NOT NULL,
 password_hash VARCHAR(255) NOT NULL,
+role VARCHAR(20) DEFAULT 'user',
 created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -29,18 +30,6 @@ CREATE INDEX idx_password_reset_tokens_token
 ON password_reset_tokens(token);
 
 
-
-SELECT * FROM users;
-
-SELECT to_char(created_at, 'hh24:mi:ss') AS "Date" from users
-
-SELECT age(now(), created_at) from users
-
-SELECT * FROM password_reset_tokens;
-
-SELECT * FROM password_reset_tokens
-WHERE token = 'test-token-12345'
-
 SELECT 
     u.id, 
     u.email,
@@ -54,14 +43,11 @@ ON u.id = prt.user_id
 ORDER BY prt.created_at DESC
 LIMIT 3
 
-SELECT * FROM password_reset_tokens prt
-WHERE prt.expires_at >= NOW();
+ALTER TABLE users ADD COLUMN role VARCHAR(20) DEFAULT 'user';
 
-DELETE FROM users WHERE id = 1
+select * from users
+WHERE role = 'ADMIN'
 
-TRUNCATE TABLE users RESTART IDENTITY
-
-DELETE FROM users
-
-INSERT INTO password_reset_tokens(user_id, token, expires_at)
-VALUES (1, 'test-token-12345', NOW() + INTERVAL '1 hour')
+UPDATE users
+SET role = 'ADMIN'
+WHERE id = 5

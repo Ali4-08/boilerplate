@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import pool from "@/lib/db";
-import type { User } from "@/lib/types";
+import type { LoginData } from "@/lib/types";
 import { createToken } from "@/lib/jwt";
 import bcrypt from "bcryptjs";
 
@@ -21,11 +21,11 @@ export async function POST(request: NextRequest){
     
     // دریافت اطلاعات از پایگاه داده
     const result = await pool.query(`
-        SELECT id, name, email, password_hash, created_at
+        SELECT id, name, email, password_hash, role, created_at
         FROM users
         WHERE email=$1;
     `, [email]);
-    const user = result.rows[0] as User | undefined;
+    const user = result.rows[0] as LoginData | undefined;
 
     // نمایش پیام مناسب درصورتی که کاربر پیدا نشود
     if(!user){
@@ -47,19 +47,14 @@ export async function POST(request: NextRequest){
     }
 
     // ساخت توکن
-    const token = await createToken(user.id, user.email);
+    const token = await createToken(user.id, user.email, user.role);
 
     // ارسال اطلاعات به فرم لاگین
     const response = NextResponse.json(
         {
             success: true,
             message: "ورود موفق.",
-            data: {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-                created_at: user.created_at,
-            },
+            data: user,
         },
         {status: 200},
     );

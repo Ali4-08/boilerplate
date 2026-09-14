@@ -24,7 +24,7 @@ export async function getUserFromToken(): Promise<PublicUser | null> {
 
         // گرفتن اطلاعات کاربر از دیتابیس
         const result = await pool.query(`
-            SELECT id, name, email, created_at
+            SELECT id, name, email, role, created_at
             FROM users
             WHERE id = $1;    
         `, [payload.userId]);
