@@ -5,16 +5,16 @@ import { appError } from "@/lib/logError";
 
 export async function POST(request: NextRequest){
     try {
-        const {newPassword, token} = await request.json();
+        const {password, token} = await request.json();
 
-        if(!token || !newPassword){
+        if(!token || !password){
             return NextResponse.json(
                 {error: "رمز عبور و توکن الزامیست"},
                 {status: 400},
             );
         }
 
-        if(newPassword.length < 8){
+        if(password.length < 8){
             return NextResponse.json(
                 {error: "رمز عبور باید حداقل 8 کاراکتر باشد"},
                 {status: 400},
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest){
 
         const tokenResult = await pool.query(`
         SELECT user_id, expires_at
-        FROM password_reset_token
+        FROM password_reset_tokens
         WHERE token = $1 AND used = false;    
         `, [token]);
 
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest){
         try {
             await client.query("BEGIN");
             
-            const hashPassword = await bcrypt.hash(newPassword, 10);
+            const hashPassword = await bcrypt.hash(password, 10);
 
             await client.query("UPDATE users SET password_hash = $1 WHERE id = $2", [hashPassword, tokenData.user_id]);
 

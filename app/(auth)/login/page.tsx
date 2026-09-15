@@ -123,6 +123,7 @@ function LoginForm() {
           </div>
         </div>
 
+        {/* پیام ها */}
         <div>
           {/* پیغام های خطا */}
           <span>
@@ -174,15 +175,24 @@ function LoginForm() {
           </button>
         </div>
 
-        <p className="border-t border-gray-300 pt-4 sm:pt-6 text-center sm:text-right">
-          حساب کاربری ندارید ؟{" "}
+        <div className="space-y-2">
+          <p className="border-t border-gray-300 pt-4 sm:pt-6 text-center sm:text-right">
+            حساب کاربری ندارید ؟{" "}
+            <Link
+              href={"/register"}
+              className="text-blue-600 hover:text-blue-700 font-bold transition-colors duration-300"
+            >
+              ثبت نام کنید
+            </Link>
+          </p>
+
           <Link
-            href={"/register"}
-            className="text-blue-600 hover:text-blue-700 font-bold transition-colors duration-300"
+          href={"/forgot-password"}
+          className="text-sm text-blue-600 hover:text-blue-700 transition-colors duration-300"
           >
-            ثبت نام کنید
+              رمز عبور خود را فراموش کره اید ؟
           </Link>
-        </p>
+        </div>
       </form>
     </main>
   );
