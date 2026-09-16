@@ -1,7 +1,7 @@
 // \middleware.ts
 
 import { NextResponse, NextRequest } from "next/server";
-import type { ErrorType } from "./lib/types";
+import type { InternalError } from "./lib/types";
 import { verifyToken } from "./lib/jwt";
 
 export async function middleware(request: NextRequest) {
@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest) {
     await verifyToken(token);
     NextResponse.next();
   } catch (err) {
-    const error = err as ErrorType;
+    const error = err as InternalError;
     console.error(error.message);
 
     return NextResponse.redirect(loginURL);

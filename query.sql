@@ -45,6 +45,8 @@ LIMIT 3
 
 ALTER TABLE users ADD COLUMN role VARCHAR(20) DEFAULT 'user';
 
+SELECT * FROM users
+
 select * from users
 WHERE role = 'ADMIN'
 
