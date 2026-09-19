@@ -3,8 +3,10 @@
 import pool from "@/lib/db";
 import { redirect } from "next/navigation";
 import { getUserFromToken } from "@/lib/auth";
-import { Users, Shield, UserStar, Edit, Trash2 } from "lucide-react";
+import { Users, Shield, UserStar, Edit } from "lucide-react";
 import type { PublicUser } from "@/lib/types";
+import DeleteUserButton from "@/components/admin/DeleteUserButton";
+import ChangeRoleButton from "@/components/admin/ChangeRolButton";
 
 export default async function AdminDashboardPage() {
   // گرفتن کاربر جاری
@@ -145,17 +147,17 @@ export default async function AdminDashboardPage() {
 
               {/* سطر های جدول */}
               <tbody>
-                {users.map((item, index) => (
+                {users.map((userItem, index) => (
                   <tr
-                    key={item.id}
+                    key={userItem.id}
                     className="hover:bg-gray-100 transition-colors border-b last:border-b-0 border-gray-200"
                   >
                     <td className="text-gray-700 px-6 py-3">{index + 1}</td>
-                    <td className="text-gray-700 px-6 py-3">{item.name}</td>
-                    <td className="text-gray-700 px-6 py-3">{item.email}</td>
+                    <td className="text-gray-700 px-6 py-3">{userItem.name}</td>
+                    <td className="text-gray-700 px-6 py-3">{userItem.email}</td>
 
                     <td className="text-gray-700 px-6 py-3">
-                      {item.role === "ADMIN" ? (
+                      {userItem.role === "ADMIN" ? (
                         <span className="inline-flex items-center gap-1 px-2.5 py-1 text-purple-100 bg-purple-800 rounded-full ">
                           <Shield size={18} />
                           مدیر
@@ -169,25 +171,23 @@ export default async function AdminDashboardPage() {
                     </td>
 
                     <td className="text-gray-700 px-6 py-3">
-                      {new Date(item.created_at).toLocaleDateString("fa-IR", {
+                      {new Date(userItem.created_at).toLocaleDateString("fa-IR", {
                         day: "2-digit",
                         month: "2-digit",
                         year: "numeric",
                       })}
                     </td>
                     <td className="text-gray-700 px-6 py-3 flex items-center gap-2">
-                      <button
-                        title="تغییر نقش"
-                        className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-2 transition-colors duration-300"
-                      >
-                        <Edit size={22} />
-                      </button>
-                      <button
-                        title="حذف کاربر"
-                        className="bg-red-600 hover:bg-red-700 text-white rounded-lg p-2 transition-colors duration-300"
-                      >
-                        <Trash2 size={22} />
-                      </button>
+                      <ChangeRoleButton 
+                      userId={userItem.id}
+                      currentUserId={user.id}
+                      username={userItem.name}
+                      userRole={userItem.role}/>
+
+                      <DeleteUserButton 
+                      userId={userItem.id} 
+                      currentUserId={user.id}
+                      username={userItem.name}/>
                     </td>
                   </tr>
                 ))}

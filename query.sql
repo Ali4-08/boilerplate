@@ -52,4 +52,4 @@ WHERE role = 'ADMIN'
 
 UPDATE users
 SET role = 'ADMIN'
-WHERE id = 5
+WHERE id = 7
