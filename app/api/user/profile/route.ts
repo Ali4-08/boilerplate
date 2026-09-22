@@ -1,4 +1,4 @@
-// \app\api\profile\route.ts
+// \app\api\user\profile\route.ts
 
 import { getUserFromToken } from "@/lib/auth";
 import { NextResponse, NextRequest } from "next/server";
@@ -41,7 +41,7 @@ export async function PUT(request: NextRequest) {
         UPDATE users
         SET name = $1
         WHERE id = $2
-        RETURNING id, name, email, created_at;    
+        RETURNING id, name, email, role, created_at;    
     `,
       [trimmedName, currentUser.id],
     );
@@ -50,8 +50,8 @@ export async function PUT(request: NextRequest) {
 
     if(!updatedUser){
       return NextResponse.json(
-        {error: "خطایی در بروزرسانی پروفایل رخ داده"},
-        {status: 500},
+        {error: "کاربر مورد نظر یافت نشد"},
+        {status: 404},
       );
     }
 

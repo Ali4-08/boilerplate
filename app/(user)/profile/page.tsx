@@ -1,4 +1,4 @@
-// \app\profile\page.tsx
+// \app\(user)\profile\page.tsx
 
 import { redirect } from "next/navigation";
 import { getUserFromToken } from "@/lib/auth";
@@ -23,7 +23,7 @@ export default async function ProfilePage() {
       </div>
 
       <div className="md:hidden">
-        <MobileMenu />
+        <MobileMenu role={user.role}/>
       </div>
 
       <div className="max-w-4xl mx-auto md:p-6">
@@ -36,13 +36,14 @@ export default async function ProfilePage() {
           </h2>
           <p className="text-gray-700">نام: {user.name}</p>
           <p className="text-gray-700">ایمیل: {user.email}</p>
+          <p className="text-gray-700">نقش: {user.role === "USER" ? "کاربر" : "مدیر"}</p>
           <p className="text-gray-700">
             تاریخ عضویت:{" "}
             {new Date(user.created_at).toLocaleDateString("fa-IR", {
               day: "2-digit",
               month: "2-digit",
               year: "numeric",
-            }) || "نا مشخص"}
+            })}
           </p>
         </div>
 

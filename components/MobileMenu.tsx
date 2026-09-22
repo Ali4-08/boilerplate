@@ -8,8 +8,13 @@ import { navigations } from "@/data/navigations";
 import LogoutButton from "./LogoutButton";
 import Link from "next/link";
 
-export default function MobileMenu() {
+interface MobileMenuProps{
+  role: string;
+}
+
+export default function MobileMenu({role}: MobileMenuProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  
 
   return (
     <>
@@ -51,10 +56,21 @@ export default function MobileMenu() {
             </li>
           ))}
 
-          {/* Logout Button */}
-          <LogoutButton />
+          {role === "ADMIN" && (
+              <li>
+                <Link
+                  href={"/admin"}
+                  className="block text-lg font-semibold text-gray-600 px-4 py-2 border-b border-gray-200  transition-colors duration-200"
+                >
+                  پنل مدیر
+                </Link>
+              </li>
+            )}
 
+            {/* Logout Button */}
+          <LogoutButton />
         </ul>
+        
       </div>
 
       {/* Overlay */}

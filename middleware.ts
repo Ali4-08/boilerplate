@@ -10,11 +10,21 @@ export async function middleware(request: NextRequest) {
 
   if (!token) {
     return NextResponse.redirect(loginURL);
-  }
+  }  
 
   try {
-    await verifyToken(token);
-    NextResponse.next();
+   const {role} = await verifyToken(token);
+    
+   if(!role){
+    return NextResponse.redirect(loginURL);
+   }
+
+    if(role !== "ADMIN"){
+       return NextResponse.redirect(new URL("/dashboard", request.nextUrl));    
+    }
+
+    return NextResponse.next();
+
   } catch (err) {
     const error = err as InternalError;
     console.error(error.message);
@@ -23,9 +33,10 @@ export async function middleware(request: NextRequest) {
   }
 }
 
+
+
 export const config = {
   matcher: [
-    "/dashboard/:path*", 
-    "/profile/:path*",
+    "/admin/:path*",   
   ],
 };

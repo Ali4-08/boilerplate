@@ -3,15 +3,20 @@
 import LogoutButton from "./LogoutButton";
 import Link from "next/link";
 import { navigations } from "@/data/navigations";
+import { getUserFromToken } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
+export default async function Header() {
+  const currentUser = await getUserFromToken();
 
-export default function Header() {
-  
+  if (!currentUser) {
+    redirect("/login");
+  }
+
   return (
     <>
-    {/* منوی ویندوز */}
+      {/* منوی ویندوز */}
       <header className="hidden md:block bg-white shadow-sm border-b border-gray-200 mb-8 px-6">
-        
         <div className="max-w-4xl mx-auto p-4 flex items-center justify-between">
           {/* لوگو */}
           <Link href={"/"} className="flex items-center gap-1">
@@ -34,12 +39,24 @@ export default function Header() {
                 </Link>
               </li>
             ))}
-          </ul>
 
+            {currentUser.role === "ADMIN" && (
+              <li>
+                <Link
+                  href={"/admin"}
+                  className="hover:bg-gray-300 text-gray-600 hover:text-gray-800 px-4 py-4 rounded-md transition-colors duration-200"
+                >
+                  پنل مدیر
+                </Link>
+              </li>
+            )}
+
+          </ul>
+          
           {/* دکمه logout */}
           <LogoutButton />
-        </div>        
-      </header>     
+        </div>
+      </header>
     </>
   );
 }

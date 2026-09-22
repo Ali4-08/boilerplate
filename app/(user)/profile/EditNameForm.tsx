@@ -1,11 +1,11 @@
-// \app\profile\EditNameForm.tsx
+// \app\(user)\profile\EditNameForm.tsx
 
 "use client";
 
 import { useState } from "react";
 import { appError } from "@/lib/logError";
 import { useRouter } from "next/navigation";
-import { AuthResponse } from "@/lib/types";
+import { ApiResponse } from "@/lib/types";
 
 
 interface EditFormProps {
@@ -45,14 +45,14 @@ export default function EditNameForm({ currentName }: EditFormProps) {
 
     try {
       // درخواست به سرور برای ویرایش نام
-      const response = await fetch("/api/profile", {
+      const response = await fetch("/api/user/profile", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name }),
       });
 
       // دریافت اطلاعات از سرور
-      const data: AuthResponse = await response.json();
+      const data: ApiResponse = await response.json();
 
       // نمایش خطای مناسب درصورتی که عملیات ناموفق باشد
       if (!response.ok) {

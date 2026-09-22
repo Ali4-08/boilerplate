@@ -23,8 +23,6 @@ export async function createToken(userId: number, email: string, role: string) {
 /**تابع بررسی و خواندن توکن */
 export async function verifyToken(token: string) {
   const { payload } = await jwtVerify<TokenPayload>(token, secret);
-  if(!payload){
-    throw new Error("خطا در توکن");
-  }
+ 
   return payload;
 }

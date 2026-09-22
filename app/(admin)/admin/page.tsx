@@ -7,6 +7,8 @@ import { Users, Shield, UserStar, Edit } from "lucide-react";
 import type { PublicUser } from "@/lib/types";
 import DeleteUserButton from "@/components/admin/DeleteUserButton";
 import ChangeRoleButton from "@/components/admin/ChangeRolButton";
+import Header from "@/components/Header";
+import MobileMenu from "@/components/MobileMenu";
 
 export default async function AdminDashboardPage() {
   // گرفتن کاربر جاری
@@ -52,11 +54,20 @@ export default async function AdminDashboardPage() {
   const users = usersResult.rows as PublicUser[];
 
   return (
-    <main className="bg-gray-50 min-h-screen p-8">
+    <>
+    <div className="hidden lg:block">
+      <Header />
+    </div>
+    
+    <div className="block lg:hidden">
+      <MobileMenu role={user.role} />
+    </div>
+
+      <main className="bg-gray-50 min-h-screen p-4">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* عنوان */}
         <h1 className="text-3xl font-bold text-gray-900 mb-8">
-          Admin Dashboard
+          پنل مدیر
         </h1>
 
         {/* کارت های آماری */}
@@ -197,5 +208,6 @@ export default async function AdminDashboardPage() {
         </div>
       </div>
     </main>
+    </>
   );
 }
