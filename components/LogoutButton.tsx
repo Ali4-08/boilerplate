@@ -38,7 +38,7 @@ export default function LogoutButton() {
     <button
       onClick={handleLogout}
       disabled={loading}
-      className="bg-red-600 hover:bg-red-700 disabled:bg-red-400 disabled:cursor-not-allowed text-white px-12 py-2 rounded-md transition-colors duration-200"
+      className="bg-danger hover:bg-danger-hover disabled:bg-red-400 disabled:cursor-not-allowed text-surface px-12 py-2 rounded-md transition-colors duration-200"
     >
       {loading ? "درحال خروج..." : "خروج"}
     </button>

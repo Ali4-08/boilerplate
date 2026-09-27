@@ -5,6 +5,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Mail } from "lucide-react";
+import Input from "@/components/ui/Input";
 
 export default function ForgotPasswordPage(){
     const [email, setEmail] = useState("");
@@ -42,9 +43,9 @@ export default function ForgotPasswordPage(){
     }
 
     return(
-        <main className="min-h-screen bg-gray-50 p-4 flex items-center justify-center">
-            <div className="w-full max-w-md p-4 border border-gray-200 shadow-sm rounded-lg space-y-6">
-                <h1 className="text-2xl font-semibold text-gray-900 text-center">
+        <main className="min-h-screen bg-background p-4 flex items-center justify-center">
+            <div className="w-full max-w-md p-4 border border-border shadow-sm rounded-lg space-y-6">
+                <h1 className="text-2xl font-semibold text-text-main text-center">
                     بازیابی رمز عبور
                 </h1>
 
@@ -56,20 +57,18 @@ export default function ForgotPasswordPage(){
                 onSubmit={handleSubmit}
                 className="space-y-4"
                 >
-                    <div>
-                        <label htmlFor="email" className="block text-gray-700 mb-2">
-                            آدرس ایمیل
-                        </label>
-                        <input type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-blue-400 transition-all duration-300" />
-                    </div>
+                    <Input 
+                           label="آدرس ایمیل"
+                           id="email"
+                           type="email"
+                           value={email}
+                           error={error}
+                           onChange={(e) => setEmail(e.target.value)}
+                           />
 
                     {message && (
                         <div className="bg-green-50 border border-green-200 rounded-md p-4">
-                            <p className="text-green-700 text-sm">
+                            <p className="text-success text-sm">
                                 {message}
                             </p>
                         </div>
@@ -77,7 +76,7 @@ export default function ForgotPasswordPage(){
 
                     {error && (
                         <div className="bg-red-50 border border-red-200 rounded-md p-4">
-                            <p className="text-red-700 text-sm">
+                            <p className="text-danger text-sm">
                                 {error}
                             </p>
                         </div>
@@ -87,7 +86,7 @@ export default function ForgotPasswordPage(){
                         <button 
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed text-white rounded-lg px-4 py-2.5 flex items-center justify-center gap-2 transition-colors duration-300">
+                        className="w-full bg-primary hover:bg-primary-hover disabled:bg-primary-disabled disabled:cursor-not-allowed text-surface rounded-lg px-4 py-2.5 flex items-center justify-center gap-2 transition-colors duration-300">
                             <Mail size={22}/>
                             <span>
                                 {loading ? "درحال ارسال..." : "ارسال"}
@@ -97,7 +96,7 @@ export default function ForgotPasswordPage(){
 
                     <Link
                     href={"/login"}
-                    className="text-sm text-blue-600 hover:text-blue-700 transition-colors duration-300"
+                    className="text-sm text-primary hover:text-primary-hover transition-colors duration-300"
                     >
                         بازگشت به صفحه ورود
                     </Link>

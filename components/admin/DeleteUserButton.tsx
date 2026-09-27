@@ -56,7 +56,7 @@ export default function DeleteUserButton({userId, username, currentUserId}: Dele
         onClick={handleDelete}
         disabled={loading || isSelf}
         title="حذف کاربر"
-        className="bg-red-600 hover:bg-red-700 text-white disabled:bg-red-400 disabled:cursor-not-allowed p-2 rounded-lg transition-colors duration-300"
+        className="bg-danger hover:bg-danger-hover text-surface disabled:bg-danger-disabled disabled:cursor-not-allowed p-2 rounded-lg transition-colors duration-300"
         >
             <Trash2 size={22} />
         </button>

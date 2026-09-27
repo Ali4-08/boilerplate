@@ -61,7 +61,7 @@ export default function ChangeRoleButton({
       onClick={handleToggleRole}
       title={userRole === "USER" ? "تغییر نقش به مدیر" : "تغییر نقش به کاربر"}
       disabled={loading || isSelf}
-      className="bg-blue-600 hover:bg-blue-700 text-white disabled:bg-blue-400 disabled:cursor-not-allowed rounded-lg p-2 transition-colors duration-300"
+      className="bg-primary hover:bg-primary-hover text-surface disabled:bg-primary-disabled disabled:cursor-not-allowed rounded-lg p-2 transition-colors duration-300"
     >
       <Edit size={22} />
     </button>

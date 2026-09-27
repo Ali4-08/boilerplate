@@ -6,6 +6,7 @@ import { useState } from "react";
 import { appError } from "@/lib/logError";
 import { useRouter } from "next/navigation";
 import { ApiResponse } from "@/lib/types";
+import Input from "@/components/ui/Input";
 
 
 interface EditFormProps {
@@ -73,34 +74,26 @@ export default function EditNameForm({ currentName }: EditFormProps) {
   }
 
   return (
-    <div className="bg-white shadow-sm border border-gray-200 rounded-lg p-6">
-      <h2 className="text-xl font-semibold text-gray-800 mb-8">ویرایش نام</h2>
+    <div className="bg-surface shadow-sm border border-border rounded-lg p-6">
+      <h2 className="text-xl font-semibold text-text-main mb-8">ویرایش نام</h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="fullname" className="block mb-2 text-gray-700">
-            نام و نام خانوادگی
-          </label>
-          <input
-            type="text"
-            id="fullname"
-            value={name}
-            minLength={3}
-            maxLength={100}
-            required
-            onChange={(e) => setName(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
-          />
-        </div>
+        
+        <Input 
+        label="نام و نام خانوادگی"
+        type="text"
+        id="name"
+        error={error}
+        value={name}
+        onChange={(e) => setName(e.target.value)}        
+        />              
 
-        {error && <p className="text-red-600 text-sm">{error}</p>}
-
-        {success && <p className="text-sm text-green-600">{success}</p>}
+        {success && <p className="text-sm text-success">{success}</p>}
 
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed px-6 py-3 text-white rounded-lg transition-colors duration-300"
+          className="bg-primary hover:bg-primary-hover disabled:bg-primary-disabled disabled:cursor-not-allowed px-6 py-3 text-surface rounded-lg transition-colors duration-300"
         >
           {loading ? "درحال ذخیره..." : "ذخیره"}
         </button>

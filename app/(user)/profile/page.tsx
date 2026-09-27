@@ -14,9 +14,10 @@ export default async function ProfilePage() {
   if (!user) {
     redirect("/login");
   }
+  
 
   return (
-    <main className="bg-gray-50 min-h-screen p-4 md:p-0">
+    <main className="bg-background min-h-screen p-4 md:p-0">
 
       <div className="hidden md:block">
         <Header />
@@ -28,9 +29,9 @@ export default async function ProfilePage() {
 
       <div className="max-w-4xl mx-auto md:p-6">
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-8 mt-4">پروفایل من</h1>
+        <h1 className="text-3xl font-bold text-text-main mb-8 mt-4">پروفایل من</h1>
 
-        <div className="space-y-2 mb-4 shadow-sm p-4 rounded-lg border border-gray-200">
+        <div className="space-y-2 mb-4 shadow-sm p-4 rounded-lg border border-border">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">
             اطلاعات حساب
           </h2>

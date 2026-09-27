@@ -16,14 +16,14 @@ export default async function Header() {
   return (
     <>
       {/* منوی ویندوز */}
-      <header className="hidden md:block bg-white shadow-sm border-b border-gray-200 mb-8 px-6">
+      <header className="hidden md:block bg-surface shadow-sm border-b border-border mb-8 px-6">
         <div className="max-w-4xl mx-auto p-4 flex items-center justify-between">
           {/* لوگو */}
           <Link href={"/"} className="flex items-center gap-1">
             <span className="font-medium mt-1">Boilerplate</span>
 
             <div className="w-8 h-8 bg-blue-400 rounded-lg flex items-center justify-center">
-              <span className="text-white text-xl font-bold mt-1">B</span>
+              <span className="text-surface text-xl font-bold mt-1">B</span>
             </div>
           </Link>
 

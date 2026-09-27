@@ -18,7 +18,7 @@ export default function MobileMenu({role}: MobileMenuProps) {
 
   return (
     <>
-      <nav className="relative bg-white p-4 border border-gray-200 shadow-sm z-40">
+      <nav className="relative bg-surface p-4 border border-border shadow-sm z-40">
         {/* لوگو و دکمه منو */}
         <div className="flex items-center justify-between">
           <button
@@ -42,14 +42,14 @@ export default function MobileMenu({role}: MobileMenuProps) {
       {/* لینک های منو */}
       <div className="relative z-30">
         <ul
-          className={`absolute top-0 pt-6 min-h-screen ${menuOpen ? "right-0" : "-right-full"} w-64 p-2 bg-white h-full flex flex-col gap-4 border border-gray-200 shadow-sm transition-all duration-300`}
+          className={`absolute top-0 pt-6 min-h-screen ${menuOpen ? "right-0" : "-right-full"} w-64 p-2 bg-surface h-full flex flex-col gap-4 border border-border shadow-sm transition-all duration-300`}
         >
           {navigations.map((item) => (
             <li key={item.id}>
               <Link
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="block text-lg font-semibold text-gray-600 px-4 py-2 border-b border-gray-200  transition-colors duration-200"
+                className="block text-lg font-semibold text-gray-600 px-4 py-2 border-b border-border  transition-colors duration-200"
               >
                 {item.label}
               </Link>
@@ -60,7 +60,7 @@ export default function MobileMenu({role}: MobileMenuProps) {
               <li>
                 <Link
                   href={"/admin"}
-                  className="block text-lg font-semibold text-gray-600 px-4 py-2 border-b border-gray-200  transition-colors duration-200"
+                  className="block text-lg font-semibold text-gray-600 px-4 py-2 border-b border-border transition-colors duration-200"
                 >
                   پنل مدیر
                 </Link>

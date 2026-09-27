@@ -1,11 +1,31 @@
 @import "tailwindcss";
 
+@theme {
+  /* رنگ های اصلی */
+  --color-primary: #155dfc; /* blue-600 */
+  --color-primary-hover: #1447e6; /* blue-700 */
+  --color-primary-disabled: #51a2ff; /* blue-400 */
+
+  --color-danger: #e7000b; /* red-600 */
+  --color-danger-hover: #c10007; /* red-700 */
+  --color-danger-disabled: #ff6467; /* red-400 */
+
+  --color-success: #16a34a; /* green-600 */
+
+  --color-background: #f9fafb; /* gray-50 */
+  --color-surface: #ffffff; /* white */
+  --color-border: #e5e7eb; /* gray-200 */
+  --color-text-main: #1e293b; /* slate-800 */
+  --color-text-muted: #64748b; /* slate-500 */
+  
+}
+
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-vazirmatn), sans-serif, Arial;    
+  font-family: var(--font-vazirmatn), sans-serif, Arial;
+  background-color: var(--color-background);
+  color: var(--color-text-main);
 }
-
-

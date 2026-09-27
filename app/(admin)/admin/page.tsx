@@ -9,6 +9,8 @@ import DeleteUserButton from "@/components/admin/DeleteUserButton";
 import ChangeRoleButton from "@/components/admin/ChangeRolButton";
 import Header from "@/components/Header";
 import MobileMenu from "@/components/MobileMenu";
+import Card from "@/components/admin/Card";
+
 
 export default async function AdminDashboardPage() {
   // گرفتن کاربر جاری
@@ -18,6 +20,7 @@ export default async function AdminDashboardPage() {
   if (!user || user.role !== "ADMIN") {
     redirect("/login");
   }
+  
 
   // *************************************** آمار داشبورد
 
@@ -63,32 +66,32 @@ export default async function AdminDashboardPage() {
       <MobileMenu role={user.role} />
     </div>
 
-      <main className="bg-gray-50 min-h-screen p-4">
+      <main className="bg-background min-h-screen p-4">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* عنوان */}
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">
+        <h1 className="text-3xl font-bold text-text-main mb-8">
           پنل مدیر
         </h1>
 
         {/* کارت های آماری */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* کارت اول تعداد کاران */}
-          <div className="bg-white border border-gray-200 shadow-sm rounded-lg p-6">
+          <Card>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-500 text-sm">تعداد کاربران</p>
-                <p className="text-3xl font-bold text-gray-900 mt-1">
+                <p className="text-text-muted text-sm">تعداد کاربران</p>
+                <p className="text-3xl font-bold text-text-main mt-1">
                   {totalUsers}
                 </p>
               </div>
               <div className="bg-blue-100 p-3 rounded-lg">
-                <Users size={22} className="text-blue-700" />
+                <Users size={22} className="text-primary" />
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* کارت دوم تعداد مدیران */}
-          <div className="bg-white border border-gray-200 shadow-sm rounded-lg p-6">
+          <Card>
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-500 text-sm">تعداد مدیران</p>
@@ -100,10 +103,10 @@ export default async function AdminDashboardPage() {
                 <Shield size={22} className="text-purple-700" />
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* کارت سوم کاربران جدید */}
-          <div className="bg-white border border-gray-200 shadow-sm rounded-lg p-6">
+          <Card>
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-500 text-sm">تعداد کاربران جدید</p>
@@ -115,15 +118,15 @@ export default async function AdminDashboardPage() {
                 <UserStar size={22} className="text-green-700" />
               </div>
             </div>
-          </div>
+          </Card>
         </div>
 
         {/* لیست کاربران */}
-        <div className="border border-gray-200 bg-white shadow-sm rounded-lg overflow-hidden">
+        <div className="border border-border bg-surface shadow-sm rounded-lg overflow-hidden">
           
           {/* عنوان جدول */}
-          <div className="border-b border-gray-200 p-6">
-            <h2 className="text-3xl font-semibold text-gray-900">
+          <div className="border-b border-border p-6">
+            <h2 className="text-3xl font-semibold text-text-main">
               لیست کاربران {users.length}
             </h2>
           </div>
@@ -133,7 +136,7 @@ export default async function AdminDashboardPage() {
             <table className="w-full">
              
               {/* عنوان ستون ها */}
-              <thead className="bg-gray-50 border-gray-200 border-b">
+              <thead className="bg-background border-border border-b">
                 <tr>
                   <th className="text-right px-6 py-3 text-sm font-semibold text-gray-700">
                     ردیف
@@ -161,13 +164,13 @@ export default async function AdminDashboardPage() {
                 {users.map((userItem, index) => (
                   <tr
                     key={userItem.id}
-                    className="hover:bg-gray-100 transition-colors border-b last:border-b-0 border-gray-200"
+                    className="hover:bg-gray-100 transition-colors border-b last:border-b-0 border-border"
                   >
                     <td className="text-gray-700 px-6 py-3">{index + 1}</td>
                     <td className="text-gray-700 px-6 py-3">{userItem.name}</td>
                     <td className="text-gray-700 px-6 py-3">{userItem.email}</td>
 
-                    <td className="text-gray-700 px-6 py-3">
+                    <td className="px-6 py-3">
                       {userItem.role === "ADMIN" ? (
                         <span className="inline-flex items-center gap-1 px-2.5 py-1 text-purple-100 bg-purple-800 rounded-full ">
                           <Shield size={18} />

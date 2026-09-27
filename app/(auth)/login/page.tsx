@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { ApiResponse } from "@/lib/types";
 import { useSearchParams } from "next/navigation";
-import { Eye, EyeOff } from "lucide-react";
-
+import type { PublicUser } from "@/lib/types";
+import Input from "@/components/ui/Input";
 
 function LoginForm() {
   // تنظیم متغیر های مربوطه برای درسافت اطلاعات ار فرم
@@ -47,10 +47,14 @@ function LoginForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-      const data: ApiResponse = await response.json();
+      const data: ApiResponse<PublicUser> = await response.json();
 
       if (response.ok) {
-        router.push("/dashboard");
+        if (data.data?.role === "ADMIN") {
+          router.push("/admin");
+        } else {
+          router.push("/dashboard");
+        }
       } else {
         setLoading(false);
         setError(data.error || "خطایی رخ داده");
@@ -72,7 +76,7 @@ function LoginForm() {
 
       {resetSuccess && (
         <div className="bg-green-50 border border-green-200 rounded-md p-4 mb-4">
-          <p className="text-green-700 text-center">
+          <p className="text-success text-center">
             ✅ رمز عبور با موفقیت تغییر کرد. اکنون وارد شوید.
           </p>
         </div>
@@ -80,62 +84,34 @@ function LoginForm() {
 
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md border border-gray-200 p-6 lg:p-8 rounded-lg bg-white shadow-lg space-y-5 sm:space-y-6"
+        className="w-full max-w-md border border-border p-6 lg:p-8 rounded-lg bg-background shadow-lg space-y-5 sm:space-y-6"
       >
         {/* ایمیل */}
-        <div>
-          <label htmlFor="email" className="block mb-2">
-            ایمیل
-          </label>
-          <input
-            id="email"
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            autoComplete="email"
-            placeholder="آدرس ایمیل"
-            className="border border-gray-400 hover:border-gray-500 focus:border-transparent w-full rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
-          />
-        </div>
+        <Input
+          label="ایمیل"
+          id="email"
+          type="email"
+          value={email}
+          error={error}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
         {/* کلمه عبور */}
-        <div>
-          <label htmlFor="password" className="block mb-2">
-            کلمه عبور
-          </label>
-          <div className="relative">
-            <input
-              id="password"
-              type={showPassword ? "text" : "password"}
-              autoComplete="current-password"
-              onChange={(e) => setPassword(e.target.value)}
-              minLength={8}
-              placeholder="کلمه عبور"
-              className="border border-gray-400 hover:border-gray-500 focus:border-transparent w-full rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
-            />
-            <button
-              type="button"
-              aria-label="show password"
-              onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 p-2 cursor-pointer text-gray-600"
-            >
-              {showPassword ? <EyeOff size={24} /> : <Eye size={24} />}
-            </button>
-          </div>
-        </div>
+        <Input
+          label="رمز عبور"
+          id="password"
+          type="password"
+          value={password}
+          error={error}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
         {/* پیام ها */}
         <div>
-          {/* پیغام های خطا */}
-          <span>
-            {error && (
-              <p className="text-center text-red-500 font-semibold">{error}</p>
-            )}
-          </span>
-
           {/* پیغام ثبت موفق */}
           <span>
             {registered && (
-              <p className="text-center text-green-600 font-semibold">
+              <p className="text-center text-success font-semibold">
                 کاربر با موفقیت ثبت شد. لطفا وارد شوید
               </p>
             )}
@@ -147,7 +123,7 @@ function LoginForm() {
           <button
             disabled={loading}
             type="submit"
-            className="w-full sm:w-auto disabled:cursor-not-allowed bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-6 py-3 rounded-lg transition-colors"
+            className="w-full sm:w-auto disabled:cursor-not-allowed bg-primary hover:bg-primary-hover disabled:bg-primary-disabled text-background px-6 py-3 rounded-lg transition-colors"
           >
             {loading ? (
               <div className="flex items-center justify-center gap-2">
@@ -187,10 +163,10 @@ function LoginForm() {
           </p>
 
           <Link
-          href={"/forgot-password"}
-          className="text-sm text-blue-600 hover:text-blue-700 transition-colors duration-300"
+            href={"/forgot-password"}
+            className="text-sm text-primary hover:text-primary-hover transition-colors duration-300"
           >
-              رمز عبور خود را فراموش کره اید ؟
+            رمز عبور خود را فراموش کره اید ؟
           </Link>
         </div>
       </form>
@@ -198,10 +174,10 @@ function LoginForm() {
   );
 }
 
-export default function LoginPage(){
-  return(
+export default function LoginPage() {
+  return (
     <Suspense fallback={<div>درحال بارگزاری صفحه...</div>}>
       <LoginForm />
     </Suspense>
-  )
+  );
 }
