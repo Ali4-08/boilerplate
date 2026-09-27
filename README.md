@@ -1,6 +1,6 @@
 
 ```markdown
-<div dir="rtl" style="text-align: right;">
+<div>
 
 # 🚀 Nextjs Boilerplate
 
@@ -463,3 +463,4 @@ npm run create-admin
 </p>
 
 </div>
+```
