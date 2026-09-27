@@ -1,6 +1,6 @@
 
 ```markdown
-<div dir="rtl">
+<div dir="rtl" style="text-align: right;">
 
 # 🚀 Nextjs Boilerplate
 
@@ -69,15 +69,58 @@
 
 ---
 
-## 📸 اسکرین‌ شات‌ ها
+## 📸 اسکرین‌شات‌ها
 
-| صفحهٔ ورود | داشبورد کاربر | پنل مدیریت |
-|:---:|:---:|:---:|
-| ![ورود](./screenshots/login.png) | ![داشبورد](./screenshots/dashboard.png) | ![پنل مدیریت](./screenshots/admin-panel.png) |
+> 💡 **نکته:** برای مشاهدهٔ تصویر در اندازهٔ کامل، روی آن کلیک کنید.
 
-| پروفایل | بازیابی رمز |
-|:---:|:---:|:---:|
-| ![پروفایل](./screenshots/profile.png) | ![بازیابی رمز](./screenshots/forgot-password.png) | 
+<table>
+  <tr>
+    <td align="center">
+      <a href="./screenshots/login.png">
+        <img src="./screenshots/login.png" alt="صفحه ورود" width="300"/>
+      </a>
+      <br>
+      <sub>صفحهٔ ورود</sub>
+    </td>
+    <td align="center">
+      <a href="./screenshots/dashboard.png">
+        <img src="./screenshots/dashboard.png" alt="داشبورد کاربر" width="300"/>
+      </a>
+      <br>
+      <sub>داشبورد کاربر</sub>
+    </td>
+    <td align="center">
+      <a href="./screenshots/admin-panel.png">
+        <img src="./screenshots/admin-panel.png" alt="پنل مدیریت" width="300"/>
+      </a>
+      <br>
+      <sub>پنل مدیریت</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="./screenshots/profile.png">
+        <img src="./screenshots/profile.png" alt="پروفایل" width="300"/>
+      </a>
+      <br>
+      <sub>پروفایل کاربری</sub>
+    </td>
+    <td align="center">
+      <a href="./screenshots/forgot-password.png">
+        <img src="./screenshots/forgot-password.png" alt="بازیابی رمز" width="300"/>
+      </a>
+      <br>
+      <sub>بازیابی رمز عبور</sub>
+    </td>
+    <td align="center">
+      <a href="./screenshots/error.png">
+        <img src="./screenshots/error.png" alt="صفحه خطا" width="300"/>
+      </a>
+      <br>
+      <sub>صفحهٔ خطا (404/500)</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -130,7 +173,7 @@ CREATE DATABASE boilerplate_db;
 سپس فایل `query.sql` را اجرا کنید تا جداول ساخته شوند:
 
 ```bash
-psql -U postgres -d nextjs_starter -f query.sql
+psql -U postgres -d boilerplate_db -f query.sql
 ```
 
 #### 5️⃣ ساخت اولین کاربر ادمین
@@ -416,11 +459,10 @@ npm run create-admin
 
 اگر سوالی دارید یا با مشکلی مواجه شدید:
 
-- 🐛 [گزارش باگ](https://github.com/Ali4-08/boilerplate.git/issues)
-- 💡 [پیشنهاد ویژگی](https://github.com/Ali4-08/boilerplate.git/issues/issues)
-- 📧 ایمیل: `abnextdev@gmail.com`
-- 🐙 گیت‌ هاب: [نام شما](https://github.com/Ali4-08/)
-
+- 🐛 [گزارش باگ](https://github.com/Ali4-08/boilerplate/issues)
+- 💡 [پیشنهاد ویژگی](https://github.com/Ali4-08/boilerplate/issues)
+- 📧 ایمیل: [abnextdev@gmail.com](mailto:abnextdev@gmail.com)
+- 🐙 گیت‌ هاب: [Ali](https://github.com/Ali4-08)
 ---
 
 ## ⭐ حمایت از پروژه
@@ -433,7 +475,7 @@ npm run create-admin
 
 <div align="center">
 
-**ساخته شده با ❤️ توسط [نام شما]**
+**ساخته شده با ❤️ توسط [علی باقری]**
 
 </div>
 
