@@ -71,27 +71,42 @@
 
 ## 📸 اسکرین‌شات‌ ها
 
-> 💡 **نکته:** برای مشاهدهٔ تصویر در اندازهٔ کامل، روی آن کلیک کنید.
-
-## 📸 اسکرین‌شات‌ها
-
 > 💡 **نکته:** برای مشاهدهٔ تصویر در اندازهٔ کامل، روی تصویر کلیک کنید.
 
-#### 🔐 صفحهٔ ورود
-[![صفحه ورود](./screenshots/login.png)](./screenshots/login.png)
+<p align="center">
+  <strong>🔐 صفحهٔ ورود</strong><br>
+  <a href="./screenshots/login.png" target="_blank">
+    <img src="./screenshots/login.png" alt="صفحه ورود" width="400" style="border-radius: 8px; margin-bottom: 20px; cursor: pointer;" />
+  </a>
+</p>
 
-#### 📊 داشبورد کاربر
-[![داشبورد کاربر](./screenshots/dashboard.png)](./screenshots/dashboard.png)
+<p align="center">
+  <strong>📊 داشبورد کاربر</strong><br>
+  <a href="./screenshots/dashboard.png" target="_blank">
+    <img src="./screenshots/dashboard.png" alt="داشبورد کاربر" width="400" style="border-radius: 8px; margin-bottom: 20px; cursor: pointer;" />
+  </a>
+</p>
 
-#### 👨‍💼 پنل مدیریت
-[![پنل مدیریت](./screenshots/admin-panel.png)](./screenshots/admin-panel.png)
+<p align="center">
+  <strong>👨‍💼 پنل مدیریت</strong><br>
+  <a href="./screenshots/admin-panel.png" target="_blank">
+    <img src="./screenshots/admin-panel.png" alt="پنل مدیریت" width="400" style="border-radius: 8px; margin-bottom: 20px; cursor: pointer;" />
+  </a>
+</p>
 
-#### 👤 پروفایل کاربری
-[![پروفایل](./screenshots/profile.png)](./screenshots/profile.png)
+<p align="center">
+  <strong>👤 پروفایل کاربری</strong><br>
+  <a href="./screenshots/profile.png" target="_blank">
+    <img src="./screenshots/profile.png" alt="پروفایل" width="400" style="border-radius: 8px; margin-bottom: 20px; cursor: pointer;" />
+  </a>
+</p>
 
-#### 🔑 بازیابی رمز عبور
-[![بازیابی رمز](./screenshots/forgot-password.png)](./screenshots/forgot-password.png)
-
+<p align="center">
+  <strong>🔑 بازیابی رمز عبور</strong><br>
+  <a href="./screenshots/forgot-password.png" target="_blank">
+    <img src="./screenshots/forgot-password.png" alt="بازیابی رمز" width="400" style="border-radius: 8px; margin-bottom: 20px; cursor: pointer;" />
+  </a>
+</p>
 ---
 
 ## 🎥 دمو
@@ -448,5 +463,3 @@ npm run create-admin
 </p>
 
 </div>
-
-```
