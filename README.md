@@ -69,7 +69,7 @@
 
 ---
 
-## 📸 اسکرین‌شات‌ها
+## 📸 اسکرین‌شات‌ ها
 
 > 💡 **نکته:** برای مشاهدهٔ تصویر در اندازهٔ کامل، روی آن کلیک کنید.
 
@@ -205,9 +205,9 @@ npm run create-admin
 🔐 Hashing password...
 💾 Saving to database...
 
-╔════════════════════════════════════════╗
-║  ✅ Admin account created successfully ║
-╚════════════════════════════════════════╝
+╔══════════════════════════════════════╗
+║  Admin account created successfully  ║
+╚══════════════════════════════════════╝
 
 📋 Account details:
    👤 Name:        مدیر سیستم
@@ -237,7 +237,7 @@ npm run dev
 # ─────────────────────────────────────
 # دیتابیس
 # ─────────────────────────────────────
-DATABASE_URL=postgresql://username:password@localhost:5432/nextjs_starter
+DATABASE_URL=postgresql://username:password@localhost:5432/boilerplate_db
 
 # ─────────────────────────────────────
 # احراز هویت
