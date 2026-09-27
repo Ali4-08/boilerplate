@@ -1,7 +1,3 @@
-
-```markdown
-<div>
-
 # 🚀 Nextjs Boilerplate
 
 > یک بویلرپلیت کامل و آمادهٔ تولید برای ساخت اپلیکیشن های وب مدرن با **Next.js 15**، **PostgreSQL** و **سیستم احراز هویت کامل** - رایگان و متن باز! ✨
@@ -73,46 +69,33 @@
 
 > 💡 **نکته:** برای مشاهدهٔ تصویر در اندازهٔ کامل، روی تصویر کلیک کنید.
 
-<p align="center">
-  <strong>🔐 صفحهٔ ورود</strong><br>
-  <a href="./screenshots/login.png" target="_blank">
-    <img src="./screenshots/login.png" alt="صفحه ورود" width="400" style="border-radius: 8px; margin-bottom: 20px; cursor: pointer;" />
-  </a>
-</p>
+### 🔐 صفحهٔ ورود
 
-<p align="center">
-  <strong>📊 داشبورد کاربر</strong><br>
-  <a href="./screenshots/dashboard.png" target="_blank">
-    <img src="./screenshots/dashboard.png" alt="داشبورد کاربر" width="400" style="border-radius: 8px; margin-bottom: 20px; cursor: pointer;" />
-  </a>
-</p>
+[![صفحه ورود](./screenshots/login.png)](./screenshots/login.png)
 
-<p align="center">
-  <strong>👨‍💼 پنل مدیریت</strong><br>
-  <a href="./screenshots/admin-panel.png" target="_blank">
-    <img src="./screenshots/admin-panel.png" alt="پنل مدیریت" width="400" style="border-radius: 8px; margin-bottom: 20px; cursor: pointer;" />
-  </a>
-</p>
+### 📊 داشبورد کاربر
 
-<p align="center">
-  <strong>👤 پروفایل کاربری</strong><br>
-  <a href="./screenshots/profile.png" target="_blank">
-    <img src="./screenshots/profile.png" alt="پروفایل" width="400" style="border-radius: 8px; margin-bottom: 20px; cursor: pointer;" />
-  </a>
-</p>
+[![داشبورد کاربر](./screenshots/dashboard.png)](./screenshots/dashboard.png)
 
-<p align="center">
-  <strong>🔑 بازیابی رمز عبور</strong><br>
-  <a href="./screenshots/forgot-password.png" target="_blank">
-    <img src="./screenshots/forgot-password.png" alt="بازیابی رمز" width="400" style="border-radius: 8px; margin-bottom: 20px; cursor: pointer;" />
-  </a>
-</p>
+### 👨‍💼 پنل مدیریت
+
+[![پنل مدیریت](./screenshots/admin-panel.png)](./screenshots/admin-panel.png)
+
+### 👤 پروفایل کاربری
+
+[![پروفایل](./screenshots/profile.png)](./screenshots/profile.png)
+
+### 🔑 بازیابی رمز عبور
+
+[![بازیابی رمز](./screenshots/forgot-password.png)](./screenshots/forgot-password.png)
+
 ---
 
 ## 🎥 دمو
 
 > 🔗 **لینک دمو:** [مشاهدهٔ دموی زنده](#) *(بعد از دیپلوی اضافه می‌شود)*
 
+---
 
 ## 🚀 شروع سریع
 
@@ -448,6 +431,7 @@ npm run create-admin
 - 💡 [پیشنهاد ویژگی](https://github.com/Ali4-08/boilerplate/issues)
 - 📧 ایمیل: [abnextdev@gmail.com](mailto:abnextdev@gmail.com)
 - 🐙 گیت‌ هاب: [Ali](https://github.com/Ali4-08)
+
 ---
 
 ## ⭐ حمایت از پروژه
@@ -461,6 +445,3 @@ npm run create-admin
 <p align="center">
    <strong>ساخته شده با ❤️ توسط علی باقری</strong>
 </p>
-
-</div>
-```
