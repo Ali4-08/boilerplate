@@ -73,54 +73,24 @@
 
 > 💡 **نکته:** برای مشاهدهٔ تصویر در اندازهٔ کامل، روی آن کلیک کنید.
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="./screenshots/login.png">
-        <img src="./screenshots/login.png" alt="صفحه ورود" width="300"/>
-      </a>
-      <br>
-      <sub>صفحهٔ ورود</sub>
-    </td>
-    <td align="center">
-      <a href="./screenshots/dashboard.png">
-        <img src="./screenshots/dashboard.png" alt="داشبورد کاربر" width="300"/>
-      </a>
-      <br>
-      <sub>داشبورد کاربر</sub>
-    </td>
-    <td align="center">
-      <a href="./screenshots/admin-panel.png">
-        <img src="./screenshots/admin-panel.png" alt="پنل مدیریت" width="300"/>
-      </a>
-      <br>
-      <sub>پنل مدیریت</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="./screenshots/profile.png">
-        <img src="./screenshots/profile.png" alt="پروفایل" width="300"/>
-      </a>
-      <br>
-      <sub>پروفایل کاربری</sub>
-    </td>
-    <td align="center">
-      <a href="./screenshots/forgot-password.png">
-        <img src="./screenshots/forgot-password.png" alt="بازیابی رمز" width="300"/>
-      </a>
-      <br>
-      <sub>بازیابی رمز عبور</sub>
-    </td>
-    <td align="center">
-      <a href="./screenshots/error.png">
-        <img src="./screenshots/error.png" alt="صفحه خطا" width="300"/>
-      </a>
-      <br>
-      <sub>صفحهٔ خطا (404/500)</sub>
-    </td>
-  </tr>
-</table>
+## 📸 اسکرین‌شات‌ها
+
+> 💡 **نکته:** برای مشاهدهٔ تصویر در اندازهٔ کامل، روی تصویر کلیک کنید.
+
+#### 🔐 صفحهٔ ورود
+[![صفحه ورود](./screenshots/login.png)](./screenshots/login.png)
+
+#### 📊 داشبورد کاربر
+[![داشبورد کاربر](./screenshots/dashboard.png)](./screenshots/dashboard.png)
+
+#### 👨‍💼 پنل مدیریت
+[![پنل مدیریت](./screenshots/admin-panel.png)](./screenshots/admin-panel.png)
+
+#### 👤 پروفایل کاربری
+[![پروفایل](./screenshots/profile.png)](./screenshots/profile.png)
+
+#### 🔑 بازیابی رمز عبور
+[![بازیابی رمز](./screenshots/forgot-password.png)](./screenshots/forgot-password.png)
 
 ---
 
@@ -473,11 +443,10 @@ npm run create-admin
 
 ---
 
-<div align="center">
-
-**ساخته شده با ❤️ توسط [علی باقری]**
-
-</div>
+<p align="center">
+   <strong>ساخته شده با ❤️ توسط علی باقری</strong>
+</p>
 
 </div>
+
 ```
