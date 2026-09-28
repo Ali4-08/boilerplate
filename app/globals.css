@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@theme {
+:root {
   /* رنگ های اصلی */
   --color-primary: #155dfc; /* blue-600 */
   --color-primary-hover: #1447e6; /* blue-700 */
