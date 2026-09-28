@@ -16,8 +16,7 @@
   --color-surface: #ffffff; /* white */
   --color-border: #e5e7eb; /* gray-200 */
   --color-text-main: #1e293b; /* slate-800 */
-  --color-text-muted: #64748b; /* slate-500 */
-  
+  --color-text-muted: #64748b; /* slate-500 */  
 }
 
 html {
